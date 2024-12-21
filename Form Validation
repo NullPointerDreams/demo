@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+    <script>
+        function check() {
+            // Get form values
+            var name = document.forms["RegForm"]["Name"].value;
+            var email = document.forms["RegForm"]["Email"].value;
+            var phone = document.forms["RegForm"]["Phone"].value;
+
+            // Regex for email validation
+            var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+            // Check if name field is empty
+            if (name === "") {
+                alert("Please enter your name properly.");
+                document.forms["RegForm"]["Name"].focus();
+                return false;
+            }
+
+            // Check if email is valid
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid email address.");
+                document.forms["RegForm"]["Email"].focus();
+                return false;
+            }
+
+            // Check if phone number is 10 digits
+            if (phone.length !== 10) {
+                alert("Please enter a valid phone number.");
+                document.forms["RegForm"]["Phone"].focus();
+                return false;
+            }
+
+            return true; // If all validations pass
+        }
+    </script>
+</head>
+<body>
+    <h1>Registration Form</h1>
+    <form name="RegForm" onsubmit="return check()" method="post">
+        <p>
+            Name: <input type="text" size="65" name="Name">
+        </p>
+        <p>
+            Email: <input type="text" size="65" name="Email">
+        </p>
+        <p>
+            Phone: <input type="text" size="65" name="Phone">
+        </p>
+        <p>
+            Select Your Course:
+            <select type="text" name="Subject">
+                <option>BBA</option>
+                <option>BCA</option>
+                <option>BCOM</option>
+            </select>
+        </p>
+        <p>
+            Comments: <textarea cols="65" rows="5" name="Comment"></textarea>
+        </p>
+        <p>
+            <input type="submit" value="Submit" name="Submit">
+            <input type="reset" value="Reset" name="Reset">
+        </p>
+    </form>
+</body>
+</html>
